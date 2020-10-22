@@ -10,25 +10,33 @@ pipeline {
             }
         }
         stage('sonarqube') {
-            //agent {}
+            agent {
+                docker { image 'busybox' }
+            }
             steps {
                 sh 'echo sonarqube'
             }
         }
         stage('docker build') {
-            //agent {}
+            agent {
+                docker { image 'busybox' }
+            }
             steps {
                 sh 'echo docker build'
             }
         }
         stage('docker push') {
-            //agent {}
+            agent {
+                docker { image 'busybox' }
+            }
             steps {
                 sh 'docker push'
             }
         }
         stage('app deploy') {
-            //agent {}
+            agent {
+                docker { image 'busybox' }
+            }
             steps {
                 sh 'kube deploy'
             }
