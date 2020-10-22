@@ -30,7 +30,7 @@ pipeline {
                 docker { image 'busybox' }
             }
             steps {
-                sh 'docker push'
+                sh 'echo docker push'
             }
         }
         stage('app deploy') {
@@ -38,7 +38,7 @@ pipeline {
                 docker { image 'busybox' }
             }
             steps {
-                sh 'kube deploy'
+                sh 'echo kube deploy'
             }
         }
     }
