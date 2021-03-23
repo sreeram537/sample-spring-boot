@@ -4,12 +4,13 @@ LABEL name "Springboot base image"
 LABEL maintainer "Cognizant"
 LABEL version=1.0
 
+ARG JAR_FILE=build/libs/*.jar
 USER root
 
 ENV APP_LOC="/usr/src/app"
 
 WORKDIR $APP_LOC
 
-COPY build/libs/app.jar $APP_LOC/app.jar
+COPY ${JAR_FILE} app.jar
 
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
