@@ -1,6 +1,6 @@
 FROM openjdk:8u212-alpine
 
-LABEL name "Springboot base image" 
+LABEL name "sample-spring-boot" 
 LABEL maintainer "Cognizant"
 LABEL version=1.0
 
