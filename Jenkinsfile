@@ -1,5 +1,5 @@
 pipeline {
-    agent { 'Kubernetes - Control Plane' }
+    agent { node { label 'Kubernetes - Control Plane' }}
     stages {
         stage('build') {
             agent {
