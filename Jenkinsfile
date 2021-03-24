@@ -4,8 +4,7 @@ pipeline {
         stage('build') {
             agent {
                 docker { 
-                    image 'gradle' 
-                    network 'host'
+                    image 'gradle'
                    }
             }
             steps {
