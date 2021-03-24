@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('build') {
             agent {
-                docker { image 'gradle' }
+                docker { 
+                    image 'gradle' 
+                    network 'host'
+                   }
             }
             steps {
                 sh 'chmod +x gradlew && ./gradlew clean build'
