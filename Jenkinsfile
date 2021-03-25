@@ -11,6 +11,7 @@ pipeline {
             }
             steps {
                 sh 'gradle -version'
+                sh 'gradle wrapper --gradle-version 6.8.3 --distribution-type all'
                 sh 'chmod +x gradlew && ./gradlew clean build'
             }
         }
