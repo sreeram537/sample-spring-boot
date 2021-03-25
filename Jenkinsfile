@@ -1,7 +1,17 @@
 pipeline {
     agent any
     stages {
-        
+        stage('build') {
+            agent {
+                docker { 
+                    reuseNode true
+                    image 'gradle:latest' 
+                }
+            }
+            steps {
+                sh 'chmod +x gradlew && ./gradlew build'
+            }
+        }
         
         
         stage('sonarqube') {
