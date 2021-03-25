@@ -11,9 +11,7 @@ pipeline {
             }
             steps {
                 sh 'gradle -version'
-                sh 'mvn -version'
-                sh 'mvn -N io.takari:maven:wrapper -Dmaven=3.5.2'
-                sh 'chmod +x mvnw && ./mvnw clean install'
+                sh 'ping -c 4 google.com'
             }
         }
         
