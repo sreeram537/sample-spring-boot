@@ -6,6 +6,7 @@ pipeline {
                 docker { 
                     image 'gradle' 
                    }
+                docker build -t gradle --network=host
             }
             steps {
                 sh 'gradle -version'
