@@ -11,8 +11,9 @@ pipeline {
             }
             steps {
                 sh 'gradle -version'
-                sh 'gradle wrapper --gradle-version 6.8.3 --distribution-type all'
-                sh 'chmod +x gradlew && ./gradlew clean build'
+                sh 'mvn -version'
+                sh 'mvn -N io.takari:maven:wrapper -Dmaven=3.5.2'
+                sh 'chmod +x mvnw && ./mvnw clean install'
             }
         }
         
