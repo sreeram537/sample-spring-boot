@@ -5,8 +5,8 @@ pipeline {
         stage ('Test and Build') {
             agent {
                 docker {
-                    image 'openjdk:11'
-                    args '-v "$PWD":/app'
+                    image 'gradle' 
+                    args '--network=host'
                     reuseNode true
                 }
             }
