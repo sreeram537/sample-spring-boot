@@ -1,15 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        
+        stage ('Test and Build') {
             agent {
-                docker { 
+                docker {
+                    image 'openjdk:11'
+                    args '-v "$PWD":/app'
                     reuseNode true
-                    image 'gradle:latest' 
                 }
             }
             steps {
-                sh 'chmod +x gradlew && ./gradlew build'
+                sh './gradlew clean build'
             }
         }
         
