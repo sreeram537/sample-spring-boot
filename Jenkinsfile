@@ -2,20 +2,7 @@ pipeline {
     agent any
     stages {
         
-        stage('build') {
-            agent {
-                docker { 
-                    image 'gradle'
-                }
-                
-            }
-            steps {
-                sh 'gradle -version'
-                sh 'apt-get update'
-                sh 'apt-get install iputils-ping'
-                sh 'ping -c 4 google.com'
-            }
-        }
+        
         
         stage('sonarqube') {
             agent {
