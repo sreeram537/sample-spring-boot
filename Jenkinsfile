@@ -30,6 +30,7 @@ pipeline {
             }
             steps {
                 sh 'echo docker build'
+                sh 'docker build -t arigelasreeram/samplerepo .'
             }
         }
         stage('docker push') {
@@ -38,6 +39,9 @@ pipeline {
             }
             steps {
                 sh 'echo docker push'
+                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+        sh 'docker push arigelasreeram/samplerepo'
+    }
             }
         }
         stage('app deploy') {
