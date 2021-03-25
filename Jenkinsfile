@@ -26,11 +26,12 @@ pipeline {
         }
         stage('docker build') {
             agent {
-                docker { image 'busybox' }
+               dockerfile true
             }
             steps {
                 sh 'echo docker build'
-                sh 'docker build -t arigelasreeram/samplerepo .'
+                sh 'pwd'
+                sh 'ls -a'
             }
         }
         stage('docker push') {
