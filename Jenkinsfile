@@ -8,7 +8,7 @@ pipeline {
                    }
             }
             steps {
-                sh 'docker build --network=host foo/bar:latest .'
+                sh 'gradle -version'
                 sh 'chmod +x gradlew && ./gradlew clean build'
             }
         }
