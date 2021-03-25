@@ -36,14 +36,21 @@ pipeline {
         }
         stage('docker push') {
             agent {
-                docker { image 'busybox' }
+                docker {
+                    image 'gradle' 
+                    args '--network=host'
+                    reuseNode true
+                }
             }
-            steps {
-                sh 'echo docker push'
-                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-        sh 'docker push arigelasreeram/samplerepo'
-    }
-            }
+                        steps {
+                            sh './gradlew clean build'
+                        }
+                        steps {
+                            sh 'echo docker push'
+                            withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+                            sh 'docker push arigelasreeram/samplerepo'
+                        }
+                        }
         }
         stage('app deploy') {
             agent {
