@@ -2,6 +2,19 @@ pipeline {
     agent any
     stages {
         
+        stage('build') {
+            agent {
+                docker { 
+                    image 'gradle'
+                }
+                
+            }
+            steps {
+                sh 'gradle -version'
+                sh 'chmod +x gradlew && ./gradlew clean build'
+            }
+        }
+        
         stage('sonarqube') {
             agent {
                 docker { image 'busybox' }
