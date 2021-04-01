@@ -14,6 +14,9 @@ pipeline {
 
                  steps {
                         sh 'echo docker build'
+                        sh 'sudo groupadd docker'
+                        sh 'sudo usermod -aG docker $(whoami)'
+                        sh 'sudo service docker start'
                         sh 'docker build -t arigelasreeram/samplerepo .'
                         sh 'echo docker push'
                         withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') 
