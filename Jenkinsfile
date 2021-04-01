@@ -3,10 +3,14 @@ pipeline {
     stages {
         
         stage ('Test and Build') {
-
+            agent {                
+                docker.image('alpine').inside  {
+                    sh 'echo "hello from inside a container!"'
+                    reuseNode true
+                }
+            }
             steps {
                 sh './gradlew clean build'
-                
             }
         }
         
@@ -14,8 +18,6 @@ pipeline {
 
                  steps {
                         sh 'echo docker build'
-                        sh 'sudo usermod -aG docker $(whoami)'
-                        sh 'sudo service docker start'
                         sh 'docker build -t arigelasreeram/samplerepo .'
                         sh 'echo docker push'
                         withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') 
