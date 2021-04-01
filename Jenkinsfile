@@ -6,7 +6,7 @@ pipeline {
 
             steps {
                 sh './gradlew clean build'
-                sh 'sudo /etc/init.d/docker start'
+                
             }
         }
         
